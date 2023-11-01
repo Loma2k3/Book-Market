@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+	<title>Book Market</title>
+	<link href="~/style.css" rel="stylesheet" />
+	<link href="~/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/tiny-slider.css" rel="stylesheet" />
+	<link href="~/product.css" rel="stylesheet" />
+	<link href="~/post.css" rel="stylesheet" />
+	<link href="~/info.css" rel="stylesheet" />
+	<link href="~/categories.css" rel="stylesheet" />
+	<link href="~/cart.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <header>
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+			<div class="container">
+				<a class="navbar-brand" href="index.html">Sách<span>.</span></a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">Trang chủ</a>
+						</li>
+						<li class="category--hover" style="position: relative;">
+							<a class="nav-link" href="shop.html">Thể loại </a>
+							<ul class="list-category">
+								<li><a href="">Kinh dị</a></li>
+								<li><a href="">Lãng mạn</a></li>
+								<li><a href="">Hài hước</a></li>
+								
+							</ul>
+						</li>
+						<li><a class="nav-link" href="about.html">Đăng tải sản phẩm</a></li>
+					</ul>
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+    </header>
+
+   <div class="container-body">
+		@RenderBody()
+
+	</div>
+
+
+	<footer class="footer-section">
+		<div class="container relative">
+
+			@* 			 <div class="sofa-img">
+			<img src="images/footer.jpg" alt="Image" class="img-fluid">
+			</div>
+			*@
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="subscription-form">
+						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Đăng Ký Nhận Bản Tin</span></h3>
+
+						<form action="#" class="row g-3">
+							<div class="col-auto">
+								<input type="text" class="form-control" placeholder="Nhập tên">
+							</div>
+							<div class="col-auto">
+								<input type="email" class="form-control" placeholder="Nhập địa chỉ email của bạn">
+							</div>
+							<div class="col-auto">
+								<button class="btn btn-primary">
+									<span class="fa fa-paper-plane"></span>
+								</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row g-5 mb-5">
+				<div class="col-lg-4">
+					<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">TCHUN<span>.</span></a></div>
+					<p class="mb-4">Cảm ơn độc giả đã tìm đến chúng tôi. Chúng tôi sẽ cố gắng để hoàn thiện mình hơn và  mang đến trải nghiệm đọc sách tốt hơn cho mọi người.</p>
+
+					<ul class="list-unstyled custom-social">
+						<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+						<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+						<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-8">
+					<div class="row links-wrap">
+						<div class="col-6 col-sm-6 col-md-3">
+							<ul class="list-unstyled">
+								<li><a href="#">Liên hệ với chúng tôi:</a></li>
+								<li><a href="#">SĐT: 0987654321</a></li>
+								<li><a href="#">FaceBook: TCHUN</a></li>
+								<li><a href="#">Webside: TCHUN.com</a></li>
+							</ul>
+						</div>
+
+						<div class="col-6 col-sm-6 col-md-3">
+							<ul class="list-unstyled">
+								<li><a href="#">Intagram: TCHUN</a></li>
+								<li><a href="#">Twitter: TCHUN</a></li>
+								@* <li><a href="#">Live chat</a></li> *@
+							</ul>
+						</div>
+
+						<div class="col-6 col-sm-6 col-md-3">
+							<ul class="list-unstyled">
+								<li><a href="#">Liên kết nhanh</a></li>
+								<li><a href="#">Sách kinh dị</a></li>
+								<li><a href="#">Sách tình cảm</a></li>
+								<li><a href="#">Sách chính trị</a></li>
+							</ul>
+						</div>
+
+						<div class="col-6 col-sm-6 col-md-3">
+							<ul class="list-unstyled">
+								<li><a href="#">Sách mới</a></li>
+								<li><a href="#">Đất rừng Phương Nam</a></li>
+								<li><a href="#">Gánh Gánh .... Gồng Gồng ...</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="border-top copyright">
+				<div class="row pt-4">
+					<div class="col-lg-6">
+						<p class="mb-2 text-center text-lg-start">
+							Copyright ©<script>document.write(new Date().getFullYear());</script>2023. All Rights Reserved. — Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">Chun Hieu</a>  <!-- License information: https://untree.co/license/ -->
+						</p>
+					</div>
+
+					<div class="col-lg-6 text-center text-lg-end">
+						<ul class="list-unstyled d-inline-flex ms-auto">
+							<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</footer>
+</body>
+</html>

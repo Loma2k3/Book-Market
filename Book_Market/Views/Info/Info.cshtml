@@ -1,0 +1,43 @@
+﻿@{
+	Layout = "Header_Footer";
+}
+
+<div class="user-container">
+    <form action="" class="user-update">
+        <div class="user-avt">
+            <label class="user-avt_img" for="user-img-file"></label>
+        </div>
+
+        <div class="user-info">
+            <label for="">Họ và tên</label>
+            <input type="text" name="">
+
+            <label for="">Tên đăng nhập</label>
+            <input type="text" name="">
+
+            <label for="">Mật khẩu</label>
+            <input type="password" name="">
+
+            <label for="">Địa chỉ</label>
+            <input type="text" name="">
+
+            <label for="">Số điện thoại</label>
+            <input type="text" name="">
+
+            <input type="file" name="" id="user-img-file" style="display: none;">
+
+            <input type="submit", value="Gửi">
+        </div>
+    </form>
+</div>
+
+<script>
+    let pic = document.querySelector(".user-avt_img");
+    let input = document.querySelector("#user-img-file");
+
+    input.onchange = () => {
+        let url = URL.createObjectURL(input.files[0]);
+        pic.style.backgroundImage = `url('${url}')`;
+    }
+</script>
+

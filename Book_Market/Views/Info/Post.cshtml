@@ -1,0 +1,31 @@
+﻿@{
+	Layout = "Header_Footer";
+}
+
+  <div class="post-container">
+        <form class="post-form">
+            <label class="post-container_img" for="post-img">
+    
+            </label>
+    
+            <div class="post-container_detail">
+                <input type="text" placeholder="Tên Sách">
+                <input type="text" placeholder="Thể Loại">
+                <input type="text" placeholder="Tác Giả">
+                <input type="text" placeholder="Số lượng">
+                <textarea name="" id="" placeholder="Nội Dung" rows="10"></textarea>
+                <input type="submit" class="post-submit" value="Đăng">
+                <input type="file" id="post-img" name="" style="display: none;">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let pic= document.querySelector(".post-container_img");
+        let input = document.querySelector("#post-img");
+        
+        input.onchange= ()=>{
+            var url = URL.createObjectURL(input.files[0]);
+            pic.style.backgroundImage=`url('${url}')`;
+        }
+    </script>
