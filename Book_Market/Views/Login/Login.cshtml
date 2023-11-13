@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Book_Market.Models.Authentication
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,24 +14,27 @@
 
     <div id="bb-body">
         <div class="bb-login">
-            <form action="">
+            <form method="post" asp-controller="Login" asp-action="Login">
                 <div class="login-box">
                     <div class="top">
                         <h3> Đăng nhập</h3>
-                    </div>                                    
+                    </div> 
+                    <div asp-validation-summary="ModelOnly"></div>
                     <div class="bb-login">
                         <div class="form-groub">
-                            <input class="form-control" placeholder="Email" type="text">
+                            <span asp-validation-for="Username"></span>
+                            <input class="form-control" placeholder="Email" asp-for="Username">
                         </div>
                         <div class="input-group pass-box">
-                            <input class="form-control" type="text" placeholder="Mật khẩu">
-                            <span class="forget"><a href=""><i class=""></i></a></span>
+                            <span asp-validation-for="Password"></span>
+                            <input class="form-control" asp-for="Password" placeholder="Mật khẩu">
+                        
                         </div>
                         <input type="submit" class="edit" value="Đăng nhập">
                     </div>
                     <div class="bottom">
                         Chưa có tài khoản?
-                        <a href="dangki.html"> Đăng kí tại đây</a>
+                        <a asp-controller="Login" asp-action="Register"> Đăng kí tại đây</a>
                     </div>
                 </div>
 

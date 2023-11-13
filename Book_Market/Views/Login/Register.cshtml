@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Book_Market.Models.User
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,13 +11,25 @@
     <link href="~/Register.css" rel="stylesheet" />
 </head>
 <body>
-    <form class="register">
+    <form class="register" asp-controller="Login" asp-action="Register" method="post">
         <h3 class="register_header">Đăng ký</h3>
-        <input type="text" placeholder="Họ và tên">
-        <input type="text" placeholder="Tên đăng nhập">
-        <input type="text" placeholder="Mật khẩu">
-        <input type="text" placeholder="Địa chỉ">
-        <input type="text" placeholder="Số điện thoại">
+
+        <span asp-validation-for="name" style="display:block"></span>
+        <input placeholder="Họ và tên" asp-for="name">
+
+        <div asp-validation-summary="ModelOnly"></div>
+        <span asp-validation-for="userName" style="display:block"></span>
+        <input placeholder="Tên đăng nhập" asp-for="userName">
+
+        <span asp-validation-for="password" style="display:block"></span>
+        <input placeholder="Mật khẩu" asp-for="password">
+
+        <span asp-validation-for="address" style="display:block"></span>
+        <input placeholder="Địa chỉ" asp-for="address">
+
+        <span asp-validation-for="phoneNumber" style="display:block"></span>
+        <input placeholder="Số điện thoại" asp-for="phoneNumber">
+        <input asp-for="role" value="customer" style="display:none"/>
 
         <input type="submit" class="register_submit" value="Đăng ký">
     </form>

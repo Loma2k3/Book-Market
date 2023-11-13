@@ -5,7 +5,7 @@ namespace Book_Market.Controllers
 	public class HomeController : Controller
 	{
         //trang chủ
-        //[HttpGet("/home")]
+        [HttpGet("/home")]
         
         public IActionResult Home()
 		{
@@ -30,7 +30,6 @@ namespace Book_Market.Controllers
 
         //giỏ hàng
         //[HttpGet("/home/cart")]
-        [HttpGet("/")]
         public IActionResult Cart()
 		{
 			return View();

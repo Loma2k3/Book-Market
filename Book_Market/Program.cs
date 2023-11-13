@@ -9,9 +9,16 @@ builder.Services.AddDbContext<BookDatabase>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("BookConnect"));
 });
 
+builder.Services.AddSession(option =>
+{
+	option.IdleTimeout = TimeSpan.FromMinutes(30);
+
+});
+
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession();
 app.UseEndpoints(endpoints =>
 {
 	endpoints.MapControllers();
