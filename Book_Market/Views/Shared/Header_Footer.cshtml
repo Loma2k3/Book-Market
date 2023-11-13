@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	// Lấy giá trị từ session
+	string? username = Context.Session.GetString("username");
+	string? role = Context.Session.GetString("role");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,11 +53,24 @@
 								
 							</ul>
 						</li>
-						<li><a class="nav-link" href="about.html">Đăng tải sản phẩm</a></li>
+						@{
+							if(role != null && role == "admin")
+							{
+								<li><a class="nav-link" href="about.html">Đăng tải sản phẩm</a></li>
+							}
+						}
+						
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						@{
+							if(username != null)
+							{
+								<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+							}else{
+								<li><a class="nav-link" asp-controller="Login" asp-action="Login">Login</a></li>
+							}
+						}
 						
 						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>

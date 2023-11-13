@@ -5,7 +5,7 @@ namespace Book_Market.Controllers
 	public class HomeController : Controller
 	{
         //trang chủ
-        [HttpGet("/home")]
+        [HttpGet("/")]
         
         public IActionResult Home()
 		{

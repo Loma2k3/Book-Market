@@ -29,7 +29,15 @@ namespace Book_Market.Controllers
 					return View();
 				}
 
+				User? role = _db.users.FirstOrDefault(u => u.userName == user.Username);
+
 				HttpContext.Session.SetString("username",user.Username);
+
+				if (role != null)
+				{
+					HttpContext.Session.SetString("role", role.role);
+				}
+				
 				return RedirectToAction("Home","Home");
 			}
 			return View();
