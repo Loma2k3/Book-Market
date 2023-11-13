@@ -1,32 +1,38 @@
 ﻿@{
 	Layout = "Header_Footer";
 }
-
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model Book_Market.Models.User
+@{
+    string? img = Model.image;
+}
 <div class="user-container">
-    <form action="" class="user-update">
+    <form method="post" asp-controller="Info" asp-action="Info" enctype="multipart/form-data" class="user-update">
         <div class="user-avt">
-            <label class="user-avt_img" for="user-img-file"></label>
+            <label class="user-avt_img" for="user-img-file" style="background-image:url('/user/@img')"></label>
         </div>
 
         <div class="user-info">
             <label for="">Họ và tên</label>
-            <input type="text" name="">
+            <input type="text" asp-for="name">
 
             <label for="">Tên đăng nhập</label>
-            <input type="text" name="">
+            <input type="text" asp-for="userName">
 
             <label for="">Mật khẩu</label>
-            <input type="password" name="">
+            <input type="text" asp-for="password">
 
             <label for="">Địa chỉ</label>
-            <input type="text" name="">
+            <input type="text" asp-for="address">
 
             <label for="">Số điện thoại</label>
-            <input type="text" name="">
+            <input type="text" asp-for="phoneNumber">
 
-            <input type="file" name="" id="user-img-file" style="display: none;">
+            <input type="file" name="img" id="user-img-file" style="display: none;" >
+            <input asp-for="role" style="display:none"/>
 
             <input type="submit", value="Gửi">
+            <div asp-validation-summary="ModelOnly"></div>
         </div>
     </form>
 </div>

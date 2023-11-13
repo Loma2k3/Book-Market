@@ -20,4 +20,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\user\" />
+    <Folder Include="wwwroot\product\" />
+  </ItemGroup>
+
 </Project>

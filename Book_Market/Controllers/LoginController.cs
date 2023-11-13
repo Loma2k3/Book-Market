@@ -23,7 +23,8 @@ namespace Book_Market.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if(_db.users.FirstOrDefault(u=> u.userName==user.Username && u.password==user.Password) == null)
+				User? user1 = _db.users.FirstOrDefault(u => (u.userName == user.Username && u.password == user.Password));
+				if ( user1 == null)
 				{
 					ModelState.AddModelError("","username or password is wrong");
 					return View();
