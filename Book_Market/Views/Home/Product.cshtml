@@ -1,156 +1,45 @@
 ﻿@{
 	Layout = "Header_Footer";
 }
+@model Book_Market.Models.Product
 
 
-    <div class="book-buy">
-        <div class="container row">
-            <div class="book-left col">
-                <div class="img " style="background-image:url('/images/rome.jpg'); height: 100%; background-position:center; background-size:contain ">
-					@* <img src="./img/rome.jpg" alt=""> *@
-                    @* <img src="d:\web\book_market\book_market\images\rome.jpg" /> *@
-                </div>
-            </div>
-            <div class="book-info">
-                <div class="b-info">
-                    <div class="des">
-                        <h1>Romeo Và Juliet</h1>
-                    <div class="category">
-                        <strong>Thể loại:</strong>
-                        <p><span> Lãng mạn</span> </p>
-                    </div>
-                        <div class="author">
-                            <p> <span> William Shakespeare</span>(Tác Giả) </p>
-                            <p> <span> Đặng Thế Bính</span>(Dịch Giả) </p>
-                        </div>
-                        <div class="price">
-                            <p>41,500 đ</p>
-                            <p>Tiết kiệm: <span> 7,500 đ (15%)</span></p>
-                            <p>Giá thị trường: 49,000 đ</p>
-                            <p>Tình trạng: <span>Hết hàng</span> </p>
-                        </div>
-                        <div class="counter">
-                            <p>Số Lượng</p>
-                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                            <input type="text" value="1">
-                            <span class="up" onClick='increaseCount(event, this)'>+</span>
-                        </div>
-                        <p class="call">Gọi đặt hàng: <span> 0969 999 999</span></p>
-                        <div class="information">
-                            <p>Thông tin & Khuyến mãi</p>
-                            <ul>
-                                <li>Đổi trả hàng trong vòng 7 ngày</li>
-                                <li>Freeship nội thành Hà Nội từ 150.000đ</li>
-                                <li>Freeship toàn quốc từ 250.000đ</li>
-                            </ul>
 
-                        </div>
-
-
-                    </div>
-                    <div class="promotion">
-                    </div>
-                </div>
-
-            </div>
-            <div class="book-right">
-                <div class="func">
-                    <div class="func-box1">
-                        <ul>
-                            <li class="add-to-fav">
-                                <a href="">
-                                    <i class="ti-heart"></i>
-                                    <p>Thêm vào yêu thích</p>
-                                </a>
-                            </li>
-                            <li class="good-member">
-                                <a href="">
-                                    <i class="ti-user"></i>
-                                    <p>Ưu đãi Khách hàng thân thiết</p>
-                                </a>
-                            </li>
-                            <li class="shipping-free">
-                                <a href="">
-                                    <i class="ti-truck"></i>
-                                    <p>Để được miễn phí vận chuyển</p>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
+<div class="product-container">
+    @if (Model != null)
+    {
+        <div class="under">
+            <div class="under__left-product" style="background-image:url('/product/@Model.Image')">
             </div>
 
+            <div class="under__right-product">
+                <h1 class="name">@Model.Name</h1>
+                <span>
+                    <span>Tác Giả:</span>
+                    <span>@Model.Author</span>
+                </span>
+                <span>
+                    <span>Thể Loại:</span>
+                    <span>@Model.Category</span>
+                </span>
+                <span>
+                    <span>Số Lượng:</span>
+                    <span>@Model.Quantity</span>
+                </span>
+                <span>
+                    <span>Giá:</span>
+                    <span>@Model.Price $</span>
+                </span>
 
-        </div>
-
-    </div>
-    <div class="content">
-        <div class="detail row">
-            <p class="bbook-info">THÔNG TIN CHI TIẾT</p>
-            <div class="detail-1">
-                <ul>
-                    <li>Nhà xuất bản: <a href=""> NXB Văn Học</a></li>
-                    <li>Ngày xuất bản: 01/10/2016</li>
-                    <li>Nhà phát hành:<a href="">Nhã Nam</a></li>
-                    <li>Kích thước: 20.5 x 14.0 x 2.0 cm</li>
-                    <li>Số trang: 160 trang</li>
-                    <li>Trọng lượng: 350 gram</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <div class="content-end">
-        <div class="destion row">
-            <p class="gt">Giới thiệu sản phẩm</p>
-            <div class="destion-1">
-                <div class="text1">
-                    <h2> Romeo Và Juliet</h2>
-                    <p>"Ngày xưa, ở thành Verona tươi đẹp,</p>
-                    <p>Có hai nhà thuộc dòng thế phiệt trâm anh</p>
-                    <p>Mối thù xưa bỗng gây cảnh bất bình</p>
-                    <p>Máu lương thiện, tay người lành nhuộm đỏ.</p>
-                    <p>Số phận éo le, thâm thù hai họ</p>
-                    <p>Lại khéo xui sinh hạ đôi tình nhân</p>
-                    <p>Mối tình ai thê thảm muôn phần</p>
-                    <p>Chôn cừu hận, chỉ còn đành một thác.</p>
-                    <p>Tình lứa đôi thảm thương tan nát</p>
-                    <p>Trên xác con cha mẹ mới quên thù</p>
-                    <p>Chuyện thương tâm, trình diễn đôi giờ,</p>
-                    <p>Xin quý vị kiên tâm chiếu cố</p>
-                    <p>Sức mọn tài hèn, chúng tôi xin gắng trổ."</p>
-                </div>
-                <div class="text2">
-
-                    <p>
-                        Đây là tác phẩm kinh điển về câu chuyện tình của Romeo và juliet, một câu chuyện tình đau thương
-                        xuyên suốt thời đại lịch sử kiến ai cũng xót thương cho cặp đôi này.
-                    </p>
-                </div>
+                <a href="" class="product_buy">Mua</a>
             </div>
         </div>
-        <!-- js -->
-        <script>
-            function increaseCount(a, b) {
-                var input = b.previousElementSibling;
-                var value = parseInt(input.value, 10);
-                value = isNaN(value) ? 0 : value;
-                value++;
-                input.value = value;
-            }
-
-            function decreaseCount(a, b) {
-                var input = b.nextElementSibling;
-                var value = parseInt(input.value, 10);
-                if (value > 1) {
-                    value = isNaN(value) ? 0 : value;
-                    value--;
-                    input.value = value;
-                }
-            }
-        </script>
-    </div>
+        <div class="bottom">
+            <h2>DESCRIPTION</h2>
+            <p class="description">
+                @Model.Description
+            </p>
+        </div>
+    }
+    
+</div>

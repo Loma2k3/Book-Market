@@ -52,12 +52,43 @@ namespace Book_Market.Controllers
         }
 
 		//đăng sản phẩm
-		//[HttpGet("/home/post")]
-
-
+		[HttpGet("/post")]
 		public IActionResult Post()
 		{
+
 			return View();
 		}
+
+        [HttpPost("/post")]
+        public IActionResult Post([FromForm]Product product, IFormFile img)
+        {
+            if (img != null && img.Length > 0)
+            {
+                var imagePath = Path.Combine(_en.WebRootPath, "product");
+
+                // Đường dẫn đầy đủ để lưu trữ hình ảnh trong thư mục wwwroot
+                var filePath = Path.Combine(imagePath, img.FileName);
+
+                // Lưu hình ảnh vào đường dẫn
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    img.CopyTo(stream);
+                }
+
+                product.Image = img.FileName;
+                _db.products.Add(product);
+                _db.SaveChanges();
+
+                
+                return RedirectToAction("Product","Home", new { Id = product.Id });
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Cần hình ảnh sản phẩm");
+                return View();
+            }
+
+        }
 	}
 }

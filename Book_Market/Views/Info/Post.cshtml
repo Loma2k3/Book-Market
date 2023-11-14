@@ -1,21 +1,26 @@
 ﻿@{
 	Layout = "Header_Footer";
 }
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model Book_Market.Models.Product
 
   <div class="post-container">
-        <form class="post-form">
+    <form method="post" asp-controller="Info" asp-action="Post" enctype="multipart/form-data" class="post-form">
             <label class="post-container_img" for="post-img">
     
             </label>
     
             <div class="post-container_detail">
-                <input type="text" placeholder="Tên Sách">
-                <input type="text" placeholder="Thể Loại">
-                <input type="text" placeholder="Tác Giả">
-                <input type="text" placeholder="Số lượng">
-                <textarea name="" id="" placeholder="Nội Dung" rows="10"></textarea>
+                <input asp-for="Id" style="display:none"/>
+                <input type="text" placeholder="Tên Sách" asp-for="Name">
+                <input type="text" placeholder="Thể Loại" asp-for="Category">
+                <input type="text" placeholder="Tác Giả" asp-for="Author">
+                <input type="text" placeholder="Số lượng" asp-for="Quantity">
+                <input type="text" placeholder="Price" asp-for="Price">
+                <textarea asp-for="Description" placeholder="Nội Dung" rows="10"></textarea>
                 <input type="submit" class="post-submit" value="Đăng">
-                <input type="file" id="post-img" name="" style="display: none;">
+                <div asp-validation-summary="ModelOnly"></div>
+                <input type="file" id="post-img" name="img" style="display: none;">
             </div>
         </form>
     </div>

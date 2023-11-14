@@ -1,9 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Book_Market.Data;
+using Book_Market.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Market.Controllers
 {
 	public class HomeController : Controller
 	{
+        public readonly BookDatabase _db;
+        public HomeController(BookDatabase db)
+        {
+            _db = db;
+        }
         //trang chủ
         [HttpGet("/")]
         
@@ -21,12 +28,14 @@ namespace Book_Market.Controllers
 		}
 
         //chi tiết sản phẩm
-        //[HttpGet("/home/products/{id}")]
+        [HttpGet("/products/{Id}")]
         
-        public IActionResult Product()
+        public IActionResult Product(Guid Id)
 		{
-			return View();
-		}
+            Product product = _db.products.Find(Id);
+            return View(product);
+
+        }
 
         //giỏ hàng
         //[HttpGet("/home/cart")]

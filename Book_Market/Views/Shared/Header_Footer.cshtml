@@ -19,7 +19,7 @@
 	<link href="~/style.css" rel="stylesheet" />
 	<link href="~/bootstrap.min.css" rel="stylesheet" />
 	<link href="~/tiny-slider.css" rel="stylesheet" />
-	<link href="~/product.css" rel="stylesheet" />
+	<link href="~/Product.css" rel="stylesheet" />
 	<link href="~/post.css" rel="stylesheet" />
 	<link href="~/info.css" rel="stylesheet" />
 	<link href="~/categories.css" rel="stylesheet" />
@@ -56,7 +56,7 @@
 						@{
 							if(role != null && role == "admin")
 							{
-								<li><a class="nav-link" href="about.html">Đăng tải sản phẩm</a></li>
+								<li><a class="nav-link" asp-controller="Info" asp-action="Post">Đăng tải sản phẩm</a></li>
 							}
 						}
 						
