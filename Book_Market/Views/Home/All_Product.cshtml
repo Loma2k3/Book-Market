@@ -1,8 +1,9 @@
 ﻿@{
 	Layout = "Header_Footer";
 }
-
-
+@using Book_Market.Models
+@model List<Product>
+@addTagHelper  *,Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!-- Start Hero Section -->
 <div class="hero">
@@ -26,113 +27,83 @@
 	<div class="container">
 		<div class="row">
 
-			<!-- Start Column 1 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all1.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Sĩ Số Lớp Vắng 0</h3>
-					<strong class="product-price">61.200đ</strong>
+			@{
+				foreach(Product pro in Model)
+				{
+					<div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" asp-controller="Home" asp-action="Product" asp-route-Id="@pro.Id">
+							<img src="/product/@pro.Image" class="img-fluid product-thumbnail">
+							<h3 class="product-title">@pro.Name</h3>
+							<strong class="product-price">@pro.Price $</strong>
 
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 1 -->
-			<!-- Start Column 2 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all2.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Cây Cam Ngọt Của Tôi</h3>
-					<strong class="product-price">75.600đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 2 -->
-			<!-- Start Column 3 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all3.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Nhà Giả Kim</h3>
-					<strong class="product-price">63.200đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 3 -->
-			<!-- Start Column 4 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all4.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Đất Rừng Phương Nam</h3>
-					<strong class="product-price">144.000 đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 4 -->
-			<!-- Start Column 1 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all5.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Romeo Và Juliet</h3>
-					<strong class="product-price">52.200đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 1 -->
-			<!-- Start Column 2 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all6.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Ông Già Và Biển Cả</h3>
-					<strong class="product-price">33.600đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 2 -->
-			<!-- Start Column 3 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all7.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Chiếc Lá Cuối Cùng</h3>
-					<strong class="product-price">80.750 đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 3 -->
-			<!-- Start Column 4 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="images/all8.jpg" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Thế Giới Xấu Xí, Với Anh, Em Vẫn Đẹp</h3>
-					<strong class="product-price">78.200đ</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 4 -->
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div>
+				}
+			}
 
 		</div>
 	</div>
+
+	@{
+		
+		var left = ViewBag.Page - 1;
+		var right = ViewBag.Page + 1;
+	}
+
+	<div class="paging-container">
+		<div class="paging-bar">
+			<a asp-controller="Home" asp-action="All_Product" asp-route-Category="@ViewBag.Category" asp-route-Page="@left" class="paging-bar__left"><span><</span></a>
+			<span>@ViewBag.Page / @ViewBag.MaxPage</span>
+			<a asp-controller="Home" asp-action="All_Product" asp-route-Category="@ViewBag.Category" asp-route-Page="@right" class="paging-bar__right"><span>></span></a>
+		</div>
+	</div>
+
+	
+
+	<style>
+		.paging-bar * {
+			display: inline-block;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.paging-container {
+			display: flex;
+			justify-content: center;
+		}
+
+		.paging-bar {
+			display: flex;
+			align-items: center;
+		}
+
+			.paging-bar a {
+				text-decoration: none;
+				background-color: #3b5d50;
+				padding: 20px;
+				border-radius: 50%;
+				color: aliceblue;
+				position: relative;
+			}
+
+				.paging-bar a span {
+					position: absolute;
+					top: 50%;
+					right: 50%;
+					transform: translate(50%, -50%);
+				}
+
+			.paging-bar span {
+				padding: 0 10px;
+			}
+
+			.paging-bar a:hover {
+				filter: brightness(0.8);
+			}
+	</style>
 </div>
 
 

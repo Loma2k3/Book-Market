@@ -20,11 +20,43 @@ namespace Book_Market.Controllers
 		}
 
         //tổng hợp sản phẩm
-        //[HttpGet("/home/products")]
+        [HttpGet("/products/{Category}/{Page}")]
        
-        public IActionResult All_Product()
+        public IActionResult All_Product(string Category, int Page)
 		{
-			return View();
+            List<Product> count = _db.products.ToList();
+
+			var maxPage = count.Count / 8;
+			if (count.Count % 8 != 0)
+			{
+				maxPage++;
+			}
+
+            if(maxPage == 0)
+            {
+                maxPage = 1;
+            }
+
+			if (Page <= 0 || Page > maxPage)
+			{
+				Page = 1;
+			}
+
+            ViewBag.MaxPage = maxPage;
+			ViewBag.Page=Page;
+            ViewBag.Category=Category;
+
+			if (Category == "all")
+            {
+               List<Product> products = _db.products.Skip((Page-1)*8).Take(8).ToList<Product>();
+               return View(products);
+            }
+
+            List<Product> product= _db.products.Where(p=> p.Category == Category)
+                                                .Skip((Page-1)*8)
+                                                .Take(8).ToList<Product>();
+
+			return View(product);
 		}
 
         //chi tiết sản phẩm
@@ -32,7 +64,7 @@ namespace Book_Market.Controllers
         
         public IActionResult Product(Guid Id)
 		{
-            Product product = _db.products.Find(Id);
+            Product? product = _db.products.Find(Id);
             return View(product);
 
         }
